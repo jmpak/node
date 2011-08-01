@@ -2,6 +2,9 @@ var http = require('http');
 var fs = require('fs');
 var sys = require('sys');
 
+var port = process.env.PORT || 8080;
+console.log(port);
+
 var file_path = __dirname + "/us.jpg";
 fs.stat(file_path, function(err, stat) {
     
@@ -18,7 +21,7 @@ fs.stat(file_path, function(err, stat) {
             }
         });
 
-    }).listen(8080); 
+    }).listen(port); 
 }); 
 
 
