@@ -1,25 +1,34 @@
 var http = require('http');
 var fs = require('fs');
+var step = require('step');
 
 var port = process.env.PORT || 8080;
 console.log(port);
 
 var file_path = __dirname + "/us.jpg";
-fs.stat(file_path, function(err, stat) {
-    if(err) throw err;
-    var file_size = stat.size;
+var file_size, file_content;
+
+step(
+    function get_file_size() {
+        fs.stat(file_path, this)
+    },
     
-    fs.readFile(file_path, function(err, file_content) {
-        if(err) throw err;
+    function store_file_size(err, stat) {
+        file_size = stat.size;
+        this();
+    },
+    
+    function read_file_into_memory() {
+        fs.readFile(file_path, this);
+    },
+    
+    function create_server(err, file_content) {
         http.createServer(function(request, response) {
             response.writeHead(200, {
                 'Content-Type' : 'image/jpeg',
-                'Content-Length' : stat.size
+                'Content-Length' : file_size
             });
             response.end(file_content);
         }).listen(port); 
-    });
-}); 
-
-
-
+    }
+);
