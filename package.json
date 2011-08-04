@@ -4,6 +4,7 @@
   "dependencies": {
     "express": "2.2.0",
     "step" : "0.0.4",
-    "carrier" : "0.1.2"
+    "carrier" : "0.1.2",
+    "socket.io" : "0.7.7"
   }
 }

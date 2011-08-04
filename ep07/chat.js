@@ -3,6 +3,9 @@ var http = require('http'),
     fs   = require('fs'),
     io   = require('socket.io');
 
+var port = process.env.PORT || 4000;
+console.log(port);
+
 var server = http.createServer(function(request, response) {
   response.writeHead(200, {
     'Content-Type': 'text/html'
@@ -28,9 +31,9 @@ socket.sockets.on('connection', function(client) {
       client.send('Welcome, ' + username + '!');
       return;
     }
-    socket.sockets.send(username + ' sent: ' + message);
+w    socket.sockets.send(username + ' sent: ' + message);
   });
   
 });
 
-server.listen(4000);
+server.listen(port);
