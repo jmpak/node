@@ -13,9 +13,9 @@ var server = http.createServer(function(request, response) {
   
 });
 
-var socket = io.listen(server);
+var s = io.listen(server);
 
-socket.on('connection', function(client) {
+s.on('connection', function(client) {
   
   var username;
   
