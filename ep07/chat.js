@@ -13,9 +13,9 @@ var server = http.createServer(function(request, response) {
   
 });
 
-var s = io.listen(server);
+var socket = io.listen(server);
 
-s.on('connection', function(client) {
+socket.sockets.on('connection', function(client) {
   
   var username;
   
@@ -28,8 +28,7 @@ s.on('connection', function(client) {
       client.send('Welcome, ' + username + '!');
       return;
     }
-    
-    socket.broadcast(username + ' sent: ' + message);
+    socket.sockets.send(username + ' sent: ' + message);
   });
   
 });
