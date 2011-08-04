@@ -31,7 +31,7 @@ socket.sockets.on('connection', function(client) {
       client.send('Welcome, ' + username + '!');
       return;
     }
-w    socket.sockets.send(username + ' sent: ' + message);
+    socket.sockets.send(username + ' sent: ' + message);
   });
   
 });
