@@ -1,0 +1,14 @@
+p
+  label(for='product_name') Name: 
+  p
+  input(type='text', name='product[name]', value=product.name)
+p
+  label(for='product_description') Description: 
+  p
+  textarea(name='product[description]')=product.description
+p
+  label(for='product_price') Price: 
+  p
+  input(type='text', name='product[price]', value=product.price)
+p
+  input(type='submit')
