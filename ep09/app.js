@@ -1,6 +1,7 @@
 var express = require('express');
 
 var app = express.createServer();
+var port = process.env.PORT || 4000;
 
 app.configure('development', function() {
 	app.use(express.logger());
@@ -23,4 +24,4 @@ app.get('/', function(req, res) {
 	res.render('root.jade');
 });
 
-app.listen(4000);
+app.listen(port);
