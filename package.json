@@ -1,6 +1,10 @@
 {
   "name": "node-example",
   "version": "0.0.1",
+  "engines": {
+	"node": "0.6.0",
+	"npm":"1.1.19"
+  }
   "dependencies": {
   	"step" : "0.0.5",
   	"carrier" : "0.1.7",
