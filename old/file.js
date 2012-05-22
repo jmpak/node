@@ -2,9 +2,6 @@ var http = require('http');
 var fs = require('fs');
 var step = require('step');
 
-var port = process.env.PORT || 8080;
-console.log(port);
-
 var file_path = __dirname + "/us.jpg";
 var file_size, file_content;
 
@@ -29,6 +26,6 @@ step(
                 'Content-Length' : file_size
             });
             response.end(file_content);
-        }).listen(port); 
+        }).listen(4000); 
     }
 );

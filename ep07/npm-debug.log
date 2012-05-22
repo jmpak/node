@@ -1,0 +1,24 @@
+info it worked if it ends with ok
+verbose cli [ 'node', '/usr/local/bin/npm', 'test' ]
+info using npm@1.1.19
+info using node@v0.6.0
+verbose /usr/local/bin/node node symlink
+verbose config file /Users/mjoseph/.npmrc
+verbose config file /usr/local/etc/npmrc
+verbose config file /usr/local/lib/node_modules/npm/npmrc
+ERR! Error: ENOENT, No such file or directory '/Users/mjoseph/tech/node/projects/node/ep07/package.json'
+ERR! You may report this log at:
+ERR!     <http://github.com/isaacs/npm/issues>
+ERR! or email it to:
+ERR!     <npm-@googlegroups.com>
+ERR! 
+ERR! System Darwin 11.4.0
+ERR! command "node" "/usr/local/bin/npm" "test"
+ERR! cwd /Users/mjoseph/tech/node/projects/node/ep07
+ERR! node -v v0.6.0
+ERR! npm -v 1.1.19
+ERR! path /Users/mjoseph/tech/node/projects/node/ep07/package.json
+ERR! code ENOENT
+ERR! message ENOENT, No such file or directory '/Users/mjoseph/tech/node/projects/node/ep07/package.json'
+ERR! errno {}
+verbose exit [ 1, true ]
