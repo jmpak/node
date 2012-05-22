@@ -2,8 +2,8 @@
   "name": "node-example",
   "version": "0.0.1",
   "engines": {
-	"node": "0.6.0",
-	"npm":"1.1.19"
+	"node": "0.6.x",
+	"npm":"1.1.x"
   },
   "dependencies": {
   	"step" : "0.0.5",
