@@ -1,4 +1,7 @@
 var express = require('express');
+var multipart = require("./multipart/lib/multipart");
+var parser = multipart.parser();
+var fs = require('fs');
 
 var app = express.createServer();
 var port = process.env.PORT || 4000;
@@ -68,5 +71,42 @@ app.post('/products', function(req, res) {
 	var id = products.insert(req.body.product);
 	res.redirect('/products/' + id);
 });
+
+/* Photos */
+app.get('/photos/new', function(req, res) {
+	res.render('photos/new');
+});
+
+app.post('/photos', function(req, res) {
+	req.setEncoding('binary');
+	parser.headers = req.headers;
+	var ws;
+
+	parser.onPartBegin = function(part) {
+		console.log('here');
+		ws = fs.createWriteStream(__dirname + '/static/upload/photos/' + part.filename);
+		ws.on('error', function(err) {
+			throw err;
+		})
+	};
+	
+	parser.onData = function(data) {
+		console.log('XXXXXXX data');
+		ws.write(data);
+	}
+	
+	parser.onPartEnd = function() {
+		console.log('XXXXXXX end');
+		ws.end();
+		parser.close();
+		res.send('File successfully uploaded.');
+	}
+	
+	req.on('data', function(data) {
+		console.log('XXXXXXX POST - WS');
+		parser.write(data);
+	});
+});
+
 
 app.listen(port);
