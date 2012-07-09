@@ -1,11 +1,16 @@
 !!! 5
 html
 head
-	link(rel='stylesheet', href='/stylesheets/styles.css');
-	title My template
+  link(rel='stylesheet', href='/stylesheets/styles.css');
+  title My template
 body
-	#main
-		h1 Content goes here:
-		#container!= body
-			
-		
+  #main
+    #header
+      - if (session.user)
+        #user!= 'logged in as ' + session.user.login
+        #logout
+          a(href='/sessions/destroy') logout
+    - if (flash.warn)
+      p#warn= flash.warn
+    h1 Content goes here:
+    #container!= body

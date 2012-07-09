@@ -36,6 +36,18 @@ app.configure('production', function() {
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 
+app.dynamicHelpers(
+  {
+    session: function(req, res) {
+      return req.session;
+    },
+    
+    flash: function(req, res) {
+      return req.flash();
+    }
+  }
+);
+
 function requiresLogin(req, res, next) {
   if(req.session.user) {
     next();
@@ -46,6 +58,35 @@ function requiresLogin(req, res, next) {
 
 app.get('/', function(req, res) {
 	res.render('root');
+});
+
+/* Sessions */
+var users = require('./users');
+
+app.get('/sessions/new', function(req, res) {
+  res.render('sessions/new', {locals: {
+    redir: req.query.redir
+  }});
+});
+
+app.get('/sessions/destroy', function(req, res) {
+  delete req.session.user;
+  res.redirect('/sessions/new')
+});
+
+app.post('/sessions', function(req, res) {
+  users.authenticate(req.body.login, req.body.password, function(user) {
+    if(user) {
+      req.session.user = user;
+      res.redirect(req.body.redir || '/');
+    } else {
+      console.log("ASDFDASFDSAFSDAF");
+      req.flash('warn', 'Login failed');
+      res.render('sessions/new', {locals: {
+        redir: req.body.redir
+      }});
+    }
+  })
 });
 
 var products = require('./products');
