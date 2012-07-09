@@ -1,6 +1,6 @@
 var express = require('express');
 
-var multipart = require("./multipart/lib/multipart.js");
+var multipart = require("./multipart/lib/multipart");
 var parser = multipart.parser();
 var fs = require('fs');
 
