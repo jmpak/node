@@ -1,0 +1,17 @@
+{ 
+   "name" : "myapp"
+   , "description" : "My App description"
+   , "version" : "0.0.1"
+   , "homepage" : "http://myapp.com"
+   , "author" : "Dd DD <dd@dd.com>"
+   , "contributors" : ["dd <dd@dd.com>"]
+   , "bugs" : 
+              {"mail" : "dd@dd.com"}
+   , "main" : "./index.js"
+   , "engines" : { "node" : ">=0.4.0" }
+   , "dependencies" : 
+                    {
+                      "alfred" : "0.5.2b2",
+                      "carrier" : "0.1.0"
+                    }
+}
