@@ -1,0 +1,9 @@
+{
+  "name": "nodetuts_ep30",
+  "version": "0.0.1",
+  "description" : "Episode 30 of node tuts",
+  "author" : "jmpak",
+  "dependencies": {
+  	"nano" : "3.1.0"
+  }
+}
